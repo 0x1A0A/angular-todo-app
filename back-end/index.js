@@ -11,7 +11,7 @@ const uri = `mongodb://${process.env.DBIP}:${process.env.DBPORT}/todo_app`;
 
 app.use(express.json());
 
-app.post("/user", route.User.create);
+app.post("/task", route.Task.create);
 
 app.listen(process.env.SERVERPORT, () => {
     console.log("listen to port ", process.env.SERVERPORT);

@@ -1,13 +1,13 @@
 'use struct';
 
-const model = require('../models/user');
+const model = require('../models/task');
 
 module.exports = {
     create : async function(req,res) {
-        const user = new model.User( req.body );
+        const task = new model.Task( req.body );
         res.set("Content-Type","application/json");
         
-        if (user.validateSync()) {
+        if (task.validateSync()) {
             res.send({
                 Error: {
                     name: "InvalidPayload",
@@ -17,7 +17,7 @@ module.exports = {
         }
         
         try {
-            await user.save();
+            await task.save();
         } catch (err) {
             res.send({
                 Error: {
@@ -29,6 +29,6 @@ module.exports = {
         }
 
         res.status(200);
-        res.send(user.toJSON());
+        res.send(task.toJSON());
     },
 };

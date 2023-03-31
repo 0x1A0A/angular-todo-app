@@ -3,13 +3,29 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
-const taskSchema = new Schema({
-    Name: String,
-    UserId: Schema.Types.ObjectId, 
+const listSchema = new Schema({
+    message: {
+        type: String,
+    },
+    done: {
+        type: Boolean,
+        default: false,
+    }
 });
 
-const task = mongoose.model('task', taskSchema);
+const taskSchema = new Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    firstName: String,
+    lastName: String,
+    age: Number,
+    birthDay: Date,
+    lists: [listSchema]
+});
 
 module.exports = {
-    Task: task,
+    Task: mongoose.model('task', taskSchema),
+    List: mongoose.model('list', listSchema),
 };
