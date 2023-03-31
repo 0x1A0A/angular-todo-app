@@ -3,13 +3,14 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
-const todoSchema = new Schema({
+const listSchema = new Schema({
     Note: String,
     Done: Boolean,
+    TaskId: Schema.Types.ObjectId,
 });
 
-const todo = mongoose.model('task', todoSchema);
+const list = mongoose.model('list', listSchema);
 
 module.exports = {
-    Todo: todo,
+    List: list,
 };

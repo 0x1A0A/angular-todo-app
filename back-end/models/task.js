@@ -5,7 +5,7 @@ const {Schema} = mongoose;
 
 const taskSchema = new Schema({
     Name: String,
-    todo: Schema.Types.ObjectId,
+    UserId: Schema.Types.ObjectId, 
 });
 
 const task = mongoose.model('task', taskSchema);

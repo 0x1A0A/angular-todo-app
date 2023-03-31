@@ -4,14 +4,18 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const userSchema = new Schema({
+    Name: {
+        type: String,
+        required: true,
+        alias: "name",
+    },
     FirstName: String,
     LastName: String,
     Age: Number,
     BirthDay: Date,
-    Task: Schema.Types.ObjectId,
 });
 
-const user = mongoose.model('task', userSchema);
+const user = mongoose.model('user', userSchema);
 
 module.exports = {
     User: user,
