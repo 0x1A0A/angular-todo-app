@@ -5,13 +5,13 @@ require('dotenv').config();
 const express = require('express')
 const app = express();
 const mongoose = require('mongoose');
-const router = require('./routers/routers');
+const route = require('./routes/routes');
 
 const uri = `mongodb://${process.env.DBIP}:${process.env.DBPORT}/todo_app`;
 
 app.use(express.json());
 
-app.post("/user", router.User.create);
+app.post("/user", route.User.create);
 
 app.listen(process.env.SERVERPORT, () => {
     console.log("listen to port ", process.env.SERVERPORT);
